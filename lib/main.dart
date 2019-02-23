@@ -3,6 +3,9 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
+import 'data/Movie.dart';
+import 'data/SearchData.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -41,7 +44,6 @@ class _MainState extends State<Main> {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text('Hello World!'),
               Container(
                 width: 300,
                 child: TextField(
@@ -123,61 +125,3 @@ class _MainState extends State<Main> {
   }
 }
 
-class SearchData {
-  String lastBuildDate;
-  int total;
-  int start;
-  int display;
-  List<Movie> items;
-
-  SearchData(
-      {this.lastBuildDate, this.total, this.start, this.display, this.items});
-
-  factory SearchData.fromJson(Map<String, dynamic> json) {
-    List<Movie> _items = List<Movie>();
-    json['items'].forEach((dynamic x) {
-      _items.add(Movie.fromJson(x));
-    });
-    return SearchData(
-      lastBuildDate: json['lastBuildDate'],
-      total: json['total'],
-      start: json['start'],
-      display: json['display'],
-      items: _items,
-    );
-  }
-}
-
-class Movie {
-  String title;
-  String link;
-  String image;
-  String subtitle;
-  String pubData;
-  String director;
-  String actor;
-  String userRating;
-
-  Movie(
-      {this.title,
-      this.actor,
-      this.director,
-      this.image,
-      this.link,
-      this.pubData,
-      this.subtitle,
-      this.userRating});
-
-  factory Movie.fromJson(Map<String, dynamic> json) {
-    return Movie(
-      title: json['title'],
-      link: json['link'],
-      image: json['image'],
-      subtitle: json['subtitle'],
-      pubData: json['pubData'],
-      director: json['director'],
-      actor: json['actor'],
-      userRating: json['userRating'],
-    );
-  }
-}
