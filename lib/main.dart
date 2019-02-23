@@ -26,7 +26,6 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   final movieNameTextField = TextEditingController();
-  //List<Movie> movies = List<Movie>();
 
   @override
   Widget build(BuildContext context) {
@@ -78,13 +77,13 @@ class _MainState extends State<Main> {
                 child: Padding(
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    m.title
-                        .toString()
-                        .replaceAll('<b>', '[')
-                        .replaceAll('</b>', ']'),
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 16)),
-                )
+                      m.title
+                          .toString()
+                          .replaceAll('<b>', '[')
+                          .replaceAll('</b>', ']'),
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 16)),
+                ),
               )
             ],
           ));
@@ -124,4 +123,3 @@ class _MainState extends State<Main> {
     }));
   }
 }
-
